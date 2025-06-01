@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Filter, Plus } from "lucide-react"
+import { ThemeToggle } from "./theme/theme-toggle"
 
 export function Header() {
     return (
@@ -13,8 +14,10 @@ export function Header() {
                         <span className="sr-only">Filtros</span>
                     </Button>
 
+                    <ThemeToggle />
+
                     <Button>
-                        <Plus className="h-4 w-4 mr-2" />
+                        <Plus className="h-4 w-4" />
                         Nova Transação
                     </Button>
                 </div>
