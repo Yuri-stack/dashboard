@@ -24,7 +24,7 @@ export function BalanceChart() {
     };
 
     return (
-        <div className='bg-card text-white border rounded-xl px-6 pt-6 mx-6'>
+        <div className='bg-card border rounded-xl px-6 pt-6 mx-6'>
             <h1 className='text-xl font-bold mb-4 text-muted-foreground'>Receitas vs Despesas</h1>
 
             <ResponsiveContainer width="100%" height={300}>

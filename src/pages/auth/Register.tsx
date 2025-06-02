@@ -5,11 +5,11 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link, useNavigate } from "react-router-dom"
 
-export function Login() {
+export function Register() {
     const navigate = useNavigate()
 
     return (
-        <div className="min-h-screen w-full flex items-center justify-center bg-background dark:bg-background">
+        <div className="min-h-screen w-full flex items-center justify-center bg-background dark:bg-background m-6">
             <Card className="w-full max-w-md p-2">
                 <CardHeader className="space-y-2 flex flex-col items-center">
                     <div className="w-12 h-12 rounded-full flex items-center justify-center">
@@ -17,44 +17,61 @@ export function Login() {
                     </div>
                     <div className="text-center">
                         <CardTitle className="text-2xl font-bold">FinanceApp</CardTitle>
-                        <CardDescription className="text-lg mt-6">Entrar na sua conta</CardDescription>
-                        <CardDescription className="text-sm">Gerencie suas finanças de forma eficiente</CardDescription>
+                        <CardDescription className="text-lg mt-6">Criar nova conta</CardDescription>
+                        <CardDescription className="text-sm">Comece a gerenciar suas finanças</CardDescription>
                     </div>
                 </CardHeader>
 
                 <CardContent>
                     <form className="space-y-4">
                         <div className="space-y-2">
+                            <Label htmlFor="name">Nome completo</Label>
+                            <Input
+                                id="name"
+                                type="text"
+                                placeholder="Digite seu nome completo"
+                                className="w-full"
+                            />
+                        </div>
+
+                        <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
                                 type="email"
                                 placeholder="Digite seu email"
-                                className="w-full p-5"
+                                className="w-full"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <div className="flex items-center justify-between">
-                                <Label htmlFor="password">Senha</Label>
-                            </div>
+                            <Label htmlFor="password">Senha</Label>
                             <Input
                                 id="password"
                                 type="password"
                                 placeholder="Digite sua senha"
-                                className="w-full p-5"
+                                className="w-full"
                             />
-                            <div className="flex justify-end">
-                                <Button variant="link" className="p-0 h-auto text-sm">
-                                    Esqueceu a senha?
-                                </Button>
-                            </div>
                         </div>
 
-                        <Button type="submit" className="w-full" onClick={() => {
-                            navigate("/dashboard")
-                        }}>
-                            Entrar
+                        <div className="space-y-2">
+                            <Label htmlFor="confirmPassword">Confirmar senha</Label>
+                            <Input
+                                id="confirmPassword"
+                                type="password"
+                                placeholder="Confirme sua senha"
+                                className="w-full"
+                            />
+                        </div>
+
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            onClick={() => {
+                                navigate("/dashboard")
+                            }}
+                        >
+                            Criar conta
                         </Button>
 
                         <div className="relative my-4">
@@ -91,12 +108,12 @@ export function Login() {
                         </Button>
 
                         <div className="text-center text-sm text-muted-foreground">
-                            Não tem uma conta?{" "}
-                            <Link to="/register">Criar conta</Link>
+                            Já tem uma conta?{" "}
+                            <Link to="/login">Entrar</Link>
                         </div>
                     </form>
                 </CardContent>
             </Card>
-        </div >
+        </div>
     )
 } 

@@ -2,8 +2,8 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 
 export function Transactions() {
     return (
-        <div className='bg-card text-white border rounded-xl p-6 m-6'>
-            <h1 className='text-2xl font-bold text-muted-foreground'>Todas as Transações</h1>
+        <div className='bg-card border rounded-xl p-6 m-6'>
+            <h1 className='text-xl font-bold text-muted-foreground mb-4'>Últimas transações</h1>
 
             <div className="space-y-4 mt-6">
 
