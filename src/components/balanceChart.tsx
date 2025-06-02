@@ -1,4 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import {
     LineChart,
     Line,
@@ -25,36 +24,31 @@ export function BalanceChart() {
     };
 
     return (
-        <>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Receitas vs Despesas</CardTitle>
-                </CardHeader>
-                <CardContent>
-                    <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={mockData.chartData}>
-                            <CartesianGrid vertical={false} className="stroke-muted" />
-                            <XAxis dataKey="date" axisLine={true} tickLine={false} dy={16} />
-                            <YAxis
-                                stroke="#888"
-                                axisLine={true}
-                                tickLine={false}
-                                width={100}
-                                tickFormatter={(value: number) =>
-                                    value.toLocaleString('pt-BR', {
-                                        style: 'currency',
-                                        currency: 'BRL',
-                                    })
-                                }
-                            />
+        <div className='bg-card text-white border rounded-xl px-6 pt-6 mx-6'>
+            <h1 className='text-xl font-bold mb-4 text-muted-foreground'>Receitas vs Despesas</h1>
 
-                            <Tooltip />
-                            <Line type="monotone" dataKey="receitas" stroke="#22c55e" strokeWidth={2} />
-                            <Line type="monotone" dataKey="despesas" stroke="#ef4444" strokeWidth={2} />
-                        </LineChart>
-                    </ResponsiveContainer>
-                </CardContent>
-            </Card>
-        </>
+            <ResponsiveContainer width="100%" height={300}>
+                <LineChart data={mockData.chartData}>
+                    <CartesianGrid vertical={false} className="stroke-muted" />
+                    <XAxis dataKey="date" axisLine={true} tickLine={false} dy={16} />
+                    <YAxis
+                        stroke="#888"
+                        axisLine={true}
+                        tickLine={false}
+                        width={100}
+                        tickFormatter={(value: number) =>
+                            value.toLocaleString('pt-BR', {
+                                style: 'currency',
+                                currency: 'BRL',
+                            })
+                        }
+                    />
+
+                    <Tooltip />
+                    <Line type="monotone" dataKey="receitas" stroke="#22c55e" strokeWidth={2} />
+                    <Line type="monotone" dataKey="despesas" stroke="#ef4444" strokeWidth={2} />
+                </LineChart>
+            </ResponsiveContainer>
+        </div>
     )
 }

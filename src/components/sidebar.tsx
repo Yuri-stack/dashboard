@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Settings, PieChart, Target, DollarSign, Home, CreditCard, TrendingUp, TrendingDown, ChevronLeft } from "lucide-react";
-import { Button } from "./ui/button";
 import { Link, useLocation } from "react-router-dom";
+import { Settings, PieChart, Target, DollarSign, Home, CreditCard, ChevronLeft } from "lucide-react";
+import { Button } from "./ui/button";
 
 export function Sidebar() {
     const [sidebarCollapsed, setSidebarCollapsed] = useState<boolean>(false);
@@ -15,7 +15,7 @@ export function Sidebar() {
                         <DollarSign className="w-8 h-8 text-blue-500" />
                     </div>
                     {!sidebarCollapsed &&
-                        <h1 className="text-xl font-bold">FinanceApp</h1>
+                        <h1 className="text-xl font-bold text-muted-foreground">FinanceApp</h1>
                     }
                 </div>
             </div>
@@ -36,8 +36,6 @@ export function Sidebar() {
                     {[
                         { id: 'dashboard', icon: Home, label: 'Dashboard' },
                         { id: 'transactions', icon: CreditCard, label: 'Transações' },
-                        { id: 'income', icon: TrendingUp, label: 'Receitas' },
-                        { id: 'expenses', icon: TrendingDown, label: 'Despesas' },
                         { id: 'reports', icon: PieChart, label: 'Relatórios' },
                         { id: 'goals', icon: Target, label: 'Metas' },
                         { id: 'settings', icon: Settings, label: 'Configurações' }
@@ -48,13 +46,13 @@ export function Sidebar() {
                                 data-current={pathname === `/${item.id}`}
                                 role="menuitem"
                                 aria-current={item.id ? 'page' : undefined}
-                                className={`w-full flex ${sidebarCollapsed ? 'justify-center' : ''} items-center gap-3 p-3 rounded-lg transition-colors data-[current=true]:bg-gray-700 hover:bg-slate-900`}
+                                className={`w-full flex ${sidebarCollapsed ? 'justify-center' : ''} items-center gap-3 p-3 rounded-lg transition-colors data-[current=true]:bg-slate-200 data-[current=true]:dark:bg-gray-700 hover:bg-slate-100 dark:hover:bg-slate-900`}
                             >
                                 <div className="w-5 flex items-center justify-center" aria-hidden="true">
                                     <item.icon className="w-5 h-5" />
                                 </div>
                                 {!sidebarCollapsed &&
-                                    <span>{item.label}</span>
+                                    <p className="text-muted-foreground">{item.label}</p>
                                 }
                             </Link>
                         </li>
