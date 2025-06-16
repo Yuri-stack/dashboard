@@ -1,12 +1,40 @@
+import { useState } from "react";
 import { DollarSign } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Link, useNavigate } from "react-router-dom"
+import { useAuth } from "@/contexts/auth-context";
 
 export function Login() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { signIn } = useAuth();
+    const [formData, setFormData] = useState({
+        email: "",
+        password: ""
+    });
+    const [error, setError] = useState("");
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError("");
+
+        try {
+            await signIn(formData.email, formData.password);
+            navigate("/dashboard");
+        } catch (error) {
+            setError("Email ou senha inválidos");
+        }
+    };
 
     return (
         <div className="min-h-screen w-full flex items-center justify-center bg-background dark:bg-background">
@@ -23,14 +51,24 @@ export function Login() {
                 </CardHeader>
 
                 <CardContent>
-                    <form className="space-y-4">
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                        {error && (
+                            <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                                {error}
+                            </div>
+                        )}
+
                         <div className="space-y-2">
                             <Label htmlFor="email">Email</Label>
                             <Input
                                 id="email"
+                                name="email"
                                 type="email"
+                                value={formData.email}
+                                onChange={handleInputChange}
                                 placeholder="Digite seu email"
                                 className="w-full p-5"
+                                required
                             />
                         </div>
 
@@ -40,9 +78,13 @@ export function Login() {
                             </div>
                             <Input
                                 id="password"
+                                name="password"
                                 type="password"
+                                value={formData.password}
+                                onChange={handleInputChange}
                                 placeholder="Digite sua senha"
                                 className="w-full p-5"
+                                required
                             />
                             <div className="flex justify-end">
                                 <Button variant="link" className="p-0 h-auto text-sm">
@@ -51,13 +93,11 @@ export function Login() {
                             </div>
                         </div>
 
-                        <Button type="submit" className="w-full" onClick={() => {
-                            navigate("/dashboard")
-                        }}>
+                        <Button type="submit" className="w-full">
                             Entrar
                         </Button>
 
-                        <div className="relative my-4">
+                        <div className="relative">
                             <div className="absolute inset-0 flex items-center">
                                 <div className="w-full border-t border-gray-300" />
                             </div>
@@ -97,6 +137,6 @@ export function Login() {
                     </form>
                 </CardContent>
             </Card>
-        </div >
-    )
+        </div>
+    );
 } 

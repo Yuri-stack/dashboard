@@ -9,27 +9,35 @@ import { Goals } from "./pages/app/Goals";
 import { Reports } from "./pages/app/Reports";
 import { Settings } from "./pages/app/Settings";
 import { Register } from "./pages/auth/Register";
+import { PrivateRoute } from "./components/private-route";
+import { Error } from "./pages/Error";
 
 export const routes = createBrowserRouter([
     {
         path: "/",
+        element: <AuthLayout />,
+        children: [
+            { path: "/", element: <Login /> },
+            { path: "/login", element: <Login /> },
+            { path: "/register", element: <Register /> },
+        ],
+    },
+    {
+        path: "/",
+        // element: <PrivateRoute />,
+        // children: [
+        // {
+        errorElement: <Error />,
         element: <AppLayout />,
         children: [
-            { path: "/", element: <Dashboard /> },
             { path: "/dashboard", element: <Dashboard /> },
             { path: "/transactions", element: <Transactions /> },
             { path: "/reports", element: <Reports /> },
             { path: "/goals", element: <Goals /> },
             { path: "/settings", element: <Settings /> },
         ],
-    },
-    {
-        path: "/",
-        element: <AuthLayout />,
-        children: [
-            { path: "/login", element: <Login /> },
-            { path: "/register", element: <Register /> },
-        ],
+        // }
+        // ]
     },
     {
         path: '*',
