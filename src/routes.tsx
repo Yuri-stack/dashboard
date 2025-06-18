@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Dashboard } from "./pages/app/Dashboard";
 import { AppLayout } from "./pages/_layouts/app";
-import { Login } from "./pages/auth/Login";
 import { AuthLayout } from "./pages/_layouts/auth";
 import { Transactions } from "./pages/app/Transactions";
 import { NotFound } from "./pages/NotFound";
@@ -9,16 +8,16 @@ import { Goals } from "./pages/app/Goals";
 import { Reports } from "./pages/app/Reports";
 import { Settings } from "./pages/app/Settings";
 import { Register } from "./pages/auth/Register";
-import { PrivateRoute } from "./components/private-route";
 import { Error } from "./pages/Error";
+import LoginPage from "./pages/auth/login/Login";
 
 export const routes = createBrowserRouter([
     {
         path: "/",
-        element: <AuthLayout />,
+        // element: <AuthLayout />,
         children: [
-            { path: "/", element: <Login /> },
-            { path: "/login", element: <Login /> },
+            { path: "/", element: <LoginPage /> },
+            { path: "/login", element: <LoginPage /> },
             { path: "/register", element: <Register /> },
         ],
     },
