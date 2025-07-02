@@ -13,15 +13,15 @@ import { PrivateRoute } from "./components/private-route";
 import { Error } from "./pages/Error";
 
 export const routes = createBrowserRouter([
-    {
-        path: "/",
-        element: <AuthLayout />,
-        children: [
-            { path: "/", element: <Login /> },
-            { path: "/login", element: <Login /> },
-            { path: "/register", element: <Register /> },
-        ],
-    },
+    // {
+    //     path: "/",
+    //     element: <AuthLayout />,
+    //     children: [
+    //         { path: "/", element: <Login /> },
+    //         { path: "/login", element: <Login /> },
+    //         { path: "/register", element: <Register /> },
+    //     ],
+    // },
     {
         path: "/",
         // element: <PrivateRoute />,
