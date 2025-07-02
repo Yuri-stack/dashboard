@@ -1,24 +1,6 @@
 "use client"
 
 import * as React from "react"
-// import {
-//     IconCamera,
-//     IconChartBar,
-//     IconDashboard,
-//     IconDatabase,
-//     IconFileAi,
-//     IconFileDescription,
-//     IconFileWord,
-//     IconFolder,
-//     IconHelp,
-//     IconInnerShadowTop,
-//     IconListDetails,
-//     IconReport,
-//     IconSearch,
-//     IconSettings,
-//     IconUsers,
-// } from "@tabler/icons-react"
-
 import { NavDocuments } from "./nav-documents"
 import { NavMain } from "./nav-main"
 import { NavSecondary } from "./nav-secondary"
@@ -161,7 +143,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                             className="data-[slot=sidebar-menu-button]:!p-1.5"
                         >
                             <a href="#">
-                                {/* <IconInnerShadowTop className="!size-5" /> */}
                                 <span className="text-base font-semibold">Acme Inc.</span>
                             </a>
                         </SidebarMenuButton>

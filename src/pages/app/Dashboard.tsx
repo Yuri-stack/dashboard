@@ -4,12 +4,10 @@ import { Summary } from "@/components/summary";
 export function Dashboard() {
     return (
         <>
-            <Summary />
-            <BalanceChart />
-
-            {/* <div className="grid grid-cols-1 lg:grid-cols-2 gap-8"> */}
-            {/* <OutcomeChart /> */}
-            {/* </div> */}
+            <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
+                <Summary />
+                {/* <BalanceChart /> */}
+            </div>
         </>
     )
 }

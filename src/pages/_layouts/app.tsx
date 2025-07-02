@@ -1,6 +1,3 @@
-import { Header } from "@/components/header";
-import { Sidebar } from "@/components/sidebar";
-import { Outlet } from "react-router-dom";
 import Page from "../app/dashboard/page";
 
 export function AppLayout() {
