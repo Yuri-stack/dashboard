@@ -23,7 +23,7 @@ export function SummaryCard({ title, value, icon, type }: SummaryCardProps) {
             <CardContent>
                 <div className="flex items-center justify-between gap-2">
                     <p className={cn(
-                        "text-2xl font-bold",
+                        "text-3xl lg:text-2xl font-bold",
                         type === 'outcome' ? 'text-red-500' : 'text-green-500'
                     )}>
                         R$ {value?.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
