@@ -1,10 +1,8 @@
 "use client"
 
 import * as React from "react"
-import { NavDocuments } from "./nav-documents"
 import { NavMain } from "./nav-main"
 import { NavSecondary } from "./nav-secondary"
-import { NavUser } from "./nav-user"
 import {
     Sidebar,
     SidebarContent,
@@ -15,121 +13,40 @@ import {
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
+import { CreditCard, DollarSign, Home, PieChart, Settings, Target } from "lucide-react"
+
 const data = {
-    user: {
-        name: "shadcn",
-        email: "m@example.com",
-        avatar: "/avatars/shadcn.jpg",
-    },
     navMain: [
         {
+            id: 'dashboard',
             title: "Dashboard",
-            url: "#",
-            // icon: IconDashboard,
+            icon: Home,
         },
         {
-            title: "Lifecycle",
-            url: "#",
-            // icon: IconListDetails,
+            id: 'transactions',
+            title: "Transações",
+            icon: CreditCard
         },
         {
-            title: "Analytics",
-            url: "#",
-            // icon: IconChartBar,
+            id: "reports",
+            title: "Relatórios",
+            icon: PieChart
         },
         {
-            title: "Projects",
-            url: "#",
-            // icon: IconFolder,
-        },
-        {
-            title: "Team",
-            url: "#",
-            // icon: IconUsers,
+            id: "goals",
+            title: "Metas",
+            icon: Target,
         },
     ],
-    navClouds: [
-        {
-            title: "Capture",
-            // icon: IconCamera,
-            isActive: true,
-            url: "#",
-            items: [
-                {
-                    title: "Active Proposals",
-                    url: "#",
-                },
-                {
-                    title: "Archived",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Proposal",
-            // icon: IconFileDescription,
-            url: "#",
-            items: [
-                {
-                    title: "Active Proposals",
-                    url: "#",
-                },
-                {
-                    title: "Archived",
-                    url: "#",
-                },
-            ],
-        },
-        {
-            title: "Prompts",
-            // icon: IconFileAi,
-            url: "#",
-            items: [
-                {
-                    title: "Active Proposals",
-                    url: "#",
-                },
-                {
-                    title: "Archived",
-                    url: "#",
-                },
-            ],
-        },
-    ],
+
     navSecondary: [
         {
-            title: "Settings",
-            url: "#",
-            // icon: IconSettings,
-        },
-        {
-            title: "Get Help",
-            url: "#",
-            // icon: IconHelp,
-        },
-        {
-            title: "Search",
-            url: "#",
-            // icon: IconSearch,
+            id: "settings",
+            title: "Configurações",
+            icon: Settings,
         },
     ],
-    documents: [
-        {
-            name: "Data Library",
-            url: "#",
-            // icon: IconDatabase,
-        },
-        {
-            name: "Reports",
-            url: "#",
-            // icon: IconReport,
-        },
-        {
-            name: "Word Assistant",
-            url: "#",
-            // icon: IconFileWord,
-        },
-    ],
+
 }
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -137,26 +54,23 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <Sidebar collapsible="offcanvas" {...props}>
             <SidebarHeader>
                 <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton
-                            asChild
-                            className="data-[slot=sidebar-menu-button]:!p-1.5"
-                        >
-                            <a href="#">
-                                <span className="text-base font-semibold">Acme Inc.</span>
-                            </a>
-                        </SidebarMenuButton>
+                    <SidebarMenuItem className="flex justify-center items-center gap-1 pt-2">
+                        <div aria-hidden="true">
+                            <DollarSign className="w-8 h-8 text-blue-500" />
+                        </div>
+                        <h1 className="text-3xl font-bold text-muted-foreground">FinanceApp</h1>
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>
+
             <SidebarContent>
                 <NavMain items={data.navMain} />
-                <NavDocuments items={data.documents} />
-                <NavSecondary items={data.navSecondary} className="mt-auto" />
+                <NavSecondary items={data.navSecondary} />
             </SidebarContent>
+
             <SidebarFooter>
-                <NavUser user={data.user} />
+                {/* Talvez colocar algo aqui */}
             </SidebarFooter>
-        </Sidebar>
+        </Sidebar >
     )
 }
