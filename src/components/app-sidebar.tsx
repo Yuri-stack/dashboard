@@ -9,11 +9,11 @@ import {
     SidebarFooter,
     SidebarHeader,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 
 import { CreditCard, DollarSign, Home, PieChart, Settings, Target } from "lucide-react"
+import { Link } from "react-router-dom"
 
 const data = {
     navMain: [
@@ -49,16 +49,18 @@ const data = {
 
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar() {
     return (
-        <Sidebar collapsible="offcanvas" {...props}>
+        <Sidebar collapsible="offcanvas">
             <SidebarHeader>
                 <SidebarMenu>
-                    <SidebarMenuItem className="flex justify-center items-center gap-1 pt-2">
-                        <div aria-hidden="true">
+                    <SidebarMenuItem >
+
+                        <Link to="/" className="flex justify-center items-center gap-1 pt-2">
                             <DollarSign className="w-8 h-8 text-blue-500" />
-                        </div>
-                        <h1 className="text-3xl font-bold text-muted-foreground">FinanceApp</h1>
+                            <h1 className="text-3xl font-bold text-muted-foreground">FinanceApp</h1>
+                        </Link>
+
                     </SidebarMenuItem>
                 </SidebarMenu>
             </SidebarHeader>

@@ -1,13 +1,23 @@
-import Page from "../app/dashboard/page";
+import {
+    SidebarInset,
+    SidebarProvider,
+} from "@/components/ui/sidebar"
+import { Outlet } from "react-router-dom"
+import { AppSidebar } from "../../components/app-sidebar"
+import { SiteHeader } from "../../components/site-header"
 
 export function AppLayout() {
     return (
-        <div className="flex h-screen">
-            <Page />
-            {/* <div className="flex flex-col flex-1">
-                <Header />
-                <Outlet />
-            </div> */}
-        </div>
+        <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+                <SiteHeader />
+
+                <div className="@container/main flex flex-1 flex-col gap-2">
+                    <Outlet />
+                </div>
+
+            </SidebarInset>
+        </SidebarProvider>
     )
 }

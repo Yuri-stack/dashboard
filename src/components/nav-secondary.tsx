@@ -1,13 +1,9 @@
 "use client"
 
-import * as React from "react"
-// import { type Icon } from "@tabler/icons-react"
-
 import {
     SidebarGroup,
     SidebarGroupContent,
     SidebarMenu,
-    SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import { Link, useLocation } from "react-router-dom"
@@ -40,12 +36,10 @@ export function NavSecondary({ items }: NavSecondaryProps) {
                                 className={`w-full flex items-center gap-3 p-3 rounded-lg transition-colors data-[current=true]:bg-slate-200 data-[current=true]:dark:bg-gray-700 hover:bg-slate-100 dark:hover:bg-slate-900`}
                             >
 
-
                                 <div className="w-5 flex items-center justify-center" aria-hidden="true">
                                     <item.icon className="w-5 h-5" />
                                 </div>
                                 <p className="text-base text-muted-foreground">{item.title}</p>
-
 
                             </Link>
                         </SidebarMenuItem>

@@ -9,25 +9,12 @@ import { Settings } from "./pages/app/Settings";
 import { Error } from "./pages/Error";
 
 export const routes = createBrowserRouter([
-    // {
-    //     path: "/",
-    //     element: <AuthLayout />,
-    //     children: [
-    //         { path: "/", element: <Login /> },
-    //         { path: "/login", element: <Login /> },
-    //         { path: "/register", element: <Register /> },
-    //     ],
-    // },
-    //{
-    //  path: "/",
-    // element: <PrivateRoute />,
-    // children: [
-    // {
     {
         path: "/",
         errorElement: <Error />,
         element: <AppLayout />,
         children: [
+            { path: "/", element: <Dashboard /> },
             { path: "/dashboard", element: <Dashboard /> },
             { path: "/transactions", element: <Transactions /> },
             { path: "/reports", element: <Reports /> },
